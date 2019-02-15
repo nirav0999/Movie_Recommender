@@ -13,12 +13,19 @@ can show that locally
 
 Approach Followed-
 ---------------------------------------------------------------------------------------------
+The given Approach was followed-
+
 Scraping
 -----------
+
+
 Scraped Directly from the IMDB Pages using BeautifulSoup(New) and Selenium
 Scraped movie name ,image ,genres(fixed 12 genres mentioned in scrapeIMDB.py),,date of release,summary of the movie,IMDBRating ,no of voters 
 Stored all the data in the MongoDB
 Attached Json MongoDB file in the repo as Moviedata.json
+
+
+
 Backend
 -----------
 Each Client must rate 10 movies the reason for this is to decrease the sparsity of the matrix.Optimal performance,Client convenience and 
