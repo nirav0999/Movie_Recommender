@@ -130,11 +130,16 @@ Returns the modified Ratings_Matrix with both the
 def Matrix_Decomposition(ratings):
 	preds_df=[]
 	R=ratings.as_matrix()
-	user_ratings_mean=np.mean(R, axis = 1)
-	R_demeaned=R-user_ratings_mean.reshape(-1, 1)
-	a,sigma,b=svds(R_demeaned, k = 25)
+	user_ratings_mean=np.mean(R,axis=1)
+	urm=user_ratings_mean.reshape(-1,1)
+	R_demeaned=R-urm
+	k1=25
+	a,sigma,b=svds(R_demeaned, k=25)
+	nf_users=5
 	sigma=np.diag(sigma)
-	all_user_predicted_ratings=np.dot(np.dot(a, sigma),b)+user_ratings_mean.reshape(-1, 1)
+	ee=user_ratings_mean.reshape(-1,1)
+	nf_users=10
+	all_user_predicted_ratings=np.dot(np.dot(a, sigma),b)+ee
 	predictions=pd.DataFrame(all_user_predicted_ratings)
 	#print(predictions)
 	return predictions
