@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask Intro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  </head>
+  <script>
+    //var tabledata=JSON.parse(sessionStorage.getItem("data1"));
+  	$(document).ready(function () {
+                $.ajax({
+                "url": "/get_data1",
+                "dataType": "json",
+                "dataSrc": "data",
+                "contentType":"application/json",
+                "success":function(data){
+                  populateDataTable(data)
+                }
+            })
+               
+   
+    });
+   function populateDataTable(data) {
+
+
+
+    console.log("populating data table...");
+    $('#example').dataTable( {
+        "scrollY":        "1000px",
+        "scrollCollapse": true,
+        "paging":         false
+    } ); 
+    //$("#example").dataTable().clear();
+    console.log(data);
+    console.log(typeof data);
+    var length = Object.keys(data).length;
+    for(var i = 0; i < length; i++) {
+      var customer = data[i];
+      $('#example').dataTable().fnAddData( [
+        '<img src="/static/thumbnails/'+customer._id+'.jpg">',
+        customer.name,
+        customer.genre,
+        customer.dor,
+        customer.summary
+      ]);
+    }
+  }
+  //console.log(tabledata);
+  //console.log(typeof tabledata);
+  //populateDataTable(tabledata);
+//});
+  </script>
+  <body>
+  	<div class="container">
+      <h1>Movies Reccomender</h1>
+      <h3>Recommended Movies:</h3>
+      <div class="panel">
+        <table id="example" class="display" cellspacing="0" width="100%" data-display-length='-1'>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Genres</th>
+              <th>Date Of Release</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>	
