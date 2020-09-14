@@ -13,7 +13,7 @@ can show that locally
 
 Approach Followed-
 ---------------------------------------------------------------------------------------------
-The given Approach was followed-
+
 
 Scraping
 -----------
