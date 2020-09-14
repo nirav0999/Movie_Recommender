@@ -1,5 +1,5 @@
-"# Movie_Recommender" 
-Website deployed on Heroku Link : https://movie-reccomendation.herokuapp.com/
+<h1>Movie_Recommender</h1> 
+Website deployed on Heroku Link : https://movie-reccomendation.herokuapp.com/ <br>
 NOTE-User-User Based Recommendation System and Matrix decomposition are working fine on website however Item-Item is generating timeout,
 can show that locally 
 
